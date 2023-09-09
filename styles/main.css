@@ -4,5 +4,15 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
 
-/* HEADER */
+li {
+    list-style: none;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 100;
+}

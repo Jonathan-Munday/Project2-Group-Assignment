@@ -8,13 +8,43 @@
     <title>Login</title>
 
     <!-- my-styles -->
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/style-login.css">
+
+    <!-- scripts -->
+    <script src="app1.js"></script>
+    <!-- <script src="scripts/app.js"></script> -->
 </head>
 
 <body>
     <!-- HEADER -->
-    <header></header>
+    <script>
+        // function checkCredentials() {
+        //     window.alert("working...")
+        //     let name = document.forms["login-form"]["username"].value
+        //     let password = document.forms["login-form"]["password"].value
 
+        //     console.log(name)
+        //     console.log(password)
+
+        //     // console.log(loginCredentials[name])
+        // }
+    </script>
+    <header>
+        <div class="form-container">
+            <h2>Login</h2>
+
+            <form name="login-form" onsubmit="checkCredentials()">
+                <!-- action="scripts/app.js" -->
+                <input type="text" name="username" placeholder="username" required>
+
+                <input type="password" name="password" placeholder="password">
+
+                <button type="submit" onclick="">Enter</button>
+            </form>
+
+        </div>
+    </header>
 </body>
 
 </html>
