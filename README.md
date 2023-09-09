@@ -1,5 +1,14 @@
-*frst file upload*
+*frst github collaboration*
 
-file: #cre8.html
-desc: contains links to helpful websites that I might use, or anyone else who goes to the same educational institute as me
-date: 25/02/23 (Sat)
+# project name: Github-collab
+desc:           A simple web-project to get used to using git and github
+                to collaborate on a project and use repositories
+started:        09.09.23
+updated         09.09.23
+status:         work-in-progess
+
+more notes
+==========
+
+
+*end*
