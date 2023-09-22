@@ -7,7 +7,11 @@ git commands
 
 - git init
 - git status
+<<<<<<< HEAD
 - git clone <url to repo on github>
+=======
+- git clone <repo-name>
+>>>>>>> new_local
 - git branch <branch-name>
 - git switch <branch-name>
 
@@ -25,9 +29,12 @@ Members and tasks
 
 - Ammaar 
     > Login page
+<<<<<<< HEAD
 
 - Sinovuyo
     > Contact page
+=======
+>>>>>>> new_local
 -----------------
 
 <end>
