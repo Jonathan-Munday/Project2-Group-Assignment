@@ -1,0 +1,23 @@
+div {
+    background: aqua;
+    text-decoration: none;
+}
+div a{
+    text-decoration: none;
+    font-size: 100px;
+    color: whitesmoke;
+}
+a{
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+}
+p{
+    font-size: 60px;
+    font-family: 'Courier New', Courier, monospace;
+    color:black;
+}
+img{
+    height: 100px;
+    width: 100px;
+}
