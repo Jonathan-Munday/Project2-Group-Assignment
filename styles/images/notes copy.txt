@@ -1,0 +1,33 @@
+NOTES
+=====
+
+git commands
+------------
+- git --help
+
+- git init
+- git status
+- git clone <url to repo on github>
+- git branch <branch-name>
+- git switch <branch-name>
+
+- git add <filename> or <collection of files>
+- git commit -m <"message">
+- git diff
+- git log
+------------
+
+
+Members and tasks
+-----------------
+- Henzley 
+    > Home page 
+
+- Ammaar 
+    > Login page
+
+- Sinovuyo
+    > Contact page
+-----------------
+
+<end>
