@@ -7,6 +7,8 @@ git commands
 
 - git init
 - git status
+- git clone <url to repo on github>
+
 - git clone <repo-name>
 - git branch <branch-name>
 - git switch <branch-name>
@@ -25,6 +27,12 @@ Members and tasks
 
 - Ammaar 
     > Login page
+
+- Sinovuyo
+    > Contact page
+
+- Joshua 
+    > Login backend
 -----------------
 
 <end>
