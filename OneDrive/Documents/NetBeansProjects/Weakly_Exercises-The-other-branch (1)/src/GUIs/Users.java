@@ -114,13 +114,20 @@ public class Users {
     public String toString() {
         return "Users{" + "Firstname=" + Firstname +"\n"+"Lastname= "+Lastname + "\n Password=" + Password + "\n Age=" + Age + "\n PhoneNumber=" + PhoneNumber + "\n EmailAddress=" + EmailAddress + '}';
     }
-public void writeToFIle(){
-        FileHandler objpraac9 = new FileHandler();
-        objpraac9.openfile();
-        String rec = Firstname+"#"+Lastname+"#"+Password+"#"+Age+"#"+Gender+"#"+PhoneNumber+"#"+EmailAddress;
-        objpraac9.processFile(rec);
-        objpraac9.closefile();
-    }
+//public void writeToFIle(String rec){
+//        FileHandler objfh = new FileHandler();
+//        objfh.openfile();
+//       // String rec = Firstname+"#"+Lastname+"#"+Password+"#"+Age+"#"+Gender+"#"+PhoneNumber+"#"+EmailAddress;
+//        objfh.processFile(rec);
+//        objfh.closefile();
+//    }
+//public void readFIle(String rec){
+//        FileHandler objfh = new FileHandler();
+//        objfh.openfile();
+//       // String rec = Firstname+"#"+Lastname+"#"+Password+"#"+Age+"#"+Gender+"#"+PhoneNumber+"#"+EmailAddress;
+//        objfh.processFile(rec);
+//        objfh.closefile();
+//    }
     public Boolean validateUsername(String username) {
         String regex = "^[a-zA-Z]+$";
         if (!username.matches(regex) || username.equals("")) {
@@ -131,7 +138,7 @@ public void writeToFIle(){
     
      public  boolean validatePhoneNumber(String phoneNumber) {
         // Regular expression to match a phone number in international format
-        String regex = "^\\+(?:[0-10] ?){6,14}[0-10]$";
+        String regex = "0[0-9]{9}$";
         
         // Compile the regular expression
         Pattern pattern = Pattern.compile(regex);
@@ -185,7 +192,7 @@ public void writeToFIle(){
         // If all checks pass, return true
         return true;
     }
-    public static boolean validateAge(String age) {
+    public  boolean validateAge(String age) {
         // Check if input is empty
         if (age.isEmpty()) {
             return false;

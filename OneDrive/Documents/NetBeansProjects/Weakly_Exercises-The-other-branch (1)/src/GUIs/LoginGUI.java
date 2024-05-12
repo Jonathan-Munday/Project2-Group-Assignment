@@ -5,6 +5,7 @@
 package GUIs;
 
 import static java.awt.AlphaComposite.Clear;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -13,7 +14,9 @@ import javax.swing.JOptionPane;
  * @author hp
  */
 public class LoginGUI extends javax.swing.JFrame {
-public ArrayList<Users> UserLoginList = new ArrayList<>(); 
+
+    public ArrayList<Users> UserLoginList = new ArrayList<>();
+
     /**
      * Creates new form LoginGUI
      */
@@ -135,33 +138,50 @@ public ArrayList<Users> UserLoginList = new ArrayList<>();
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-            
-            if (evt.getActionCommand().equals("Login") || evt.getSource() == btnLogin) {
-            String username = txtFirstName.getText();
-            String password = txtPassword.getSelectedText();
-          
-//                for (int i = 0; i < UserLoginList.size(); i++) {
-//                   if(username.equals( UserLoginList.get(i).getUsername()) && password.equals( UserLoginList.get(i).getPassword()) ){
-//                      JOptionPane.showMessageDialog(null, "Welcome "+username,"Login",JOptionPane.PLAIN_MESSAGE);
-//                   }
-//                    JOptionPane.showMessageDialog(null, "User does not exit", "Login", JOptionPane.ERROR_MESSAGE);
-//                }
-           
-        } 
-           
-       
+
+        if (evt.getActionCommand().equals("Login") || evt.getSource() == btnLogin) {
+    String firstname = txtFirstName.getText();
+    String lastname = txtSurname.getText();
+    String password = txtPassword.getText(); // Use getText() instead of getSelectedText()
+    FileHandler fh = new FileHandler();
+    fh.storeFile();
+    try {
+        boolean userFound = false;
+        for (Users userRecord : FileHandler.userRecords) {
+            if (firstname.equals(userRecord.getFirstname()) && 
+                lastname.equals(userRecord.getLastname()) && 
+                password.equals(userRecord.getPassword())) {
+                userFound = true;
+                break; // Exit loop once user is found
+            }
+        }
+        if (userFound) {
+            JOptionPane.showMessageDialog(null, "Welcome " + firstname + " " + lastname, "Login", JOptionPane.INFORMATION_MESSAGE);
+            HomeGUI homepage = new HomeGUI();
+            homepage.setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "User not found in database", "Login Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (RuntimeException e) {
+        JOptionPane.showMessageDialog(null, "Error", "Runtime Exception", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-         int res = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "File",
-      JOptionPane.YES_NO_OPTION,
-      JOptionPane.PLAIN_MESSAGE);
-         if (res == 0) {
-           System.exit(0);  
+        int res = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "File",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+        if (res == 0) {
+            System.exit(0);
         }
-       
-        
+
+
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**

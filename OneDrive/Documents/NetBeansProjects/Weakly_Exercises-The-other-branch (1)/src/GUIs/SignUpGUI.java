@@ -4,6 +4,7 @@
  */
 package GUIs;
 
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -272,7 +273,11 @@ public class SignUpGUI extends javax.swing.JFrame {
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
-        String Firstname = txtFirstName.getText();
+        
+        
+        if (evt.getActionCommand().equals("Sign Up")) {
+            try {
+                String Firstname = txtFirstName.getText();
         String Surname = txtSurname.getText();
         char[] Password = txtPassword.getPassword();
         String PasswordString = new String(Password);
@@ -280,44 +285,75 @@ public class SignUpGUI extends javax.swing.JFrame {
         //String Age = txtAge.getText();
         int Age = Integer.parseInt(txtAge.getText());
         int PhoneNumber = Integer.parseInt(txtNumber.getText());
-        String temp = Integer.toString(PhoneNumber);
+        String phoneNumber = txtNumber.getText();
         String EmailAddress = txtEmail.getText();
-        if (evt.getActionCommand().equals("Sign Up")) {
-            Users myuser = new Users(Firstname, Surname, PasswordString, Gender, Age, PhoneNumber, EmailAddress);
+        int inc = 0;
+             Users myuser = new Users(Firstname, Surname, PasswordString, Gender, Age, PhoneNumber, EmailAddress);
+            while (inc != 6) {
 
-            if (myuser.validateEmail(EmailAddress)) {
-                JOptionPane.showMessageDialog(null, "Email address is valid!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Please enter a valid email address.");
+                if (myuser.validateEmail(EmailAddress)) {
+                    JOptionPane.showMessageDialog(null, "Email address is valid!");
+                    inc++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid email address.");
+                    break;
+                }
+                if (myuser.validatePhoneNumber(phoneNumber)) {
+                    JOptionPane.showMessageDialog(null, "Phone number is valid!");
+                    inc++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid phone number.");
+                    break;
+                }
+                if (myuser.validateUsername(Firstname)) {
+                    JOptionPane.showMessageDialog(null, "Firstname is valid!");
+                    inc++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a name.");
+                    break;
+                }
+                if (myuser.validateUsername(Surname)) {
+                    JOptionPane.showMessageDialog(null, "Surname is valid!");
+                    inc++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a surnname.");
+                    break;
+                }
+                if (myuser.validateAge(Integer.toString(Age))) {
+                    JOptionPane.showMessageDialog(null, "Age is valid!");
+                    inc++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid age.");
+                    break;
+                }
+                if (myuser.validatePassword(PasswordString)) {
+                    JOptionPane.showMessageDialog(null, "Password is valid!");
+                    inc++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Password is not valid!");
+                    break;
+                }
+
             }
-            if (myuser.validatePhoneNumber(temp)) {
-                JOptionPane.showMessageDialog(null, "Phone number is valid!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Please enter a valid phone number.");
+            if (inc == 6) {
+                String rec = Firstname + "#" + Surname + "#" + PasswordString + "#" + Gender + "#" + Age + "#" + PhoneNumber + "#" + EmailAddress;
+
+                FileHandler fh = new FileHandler();
+                fh.writeToFIle(rec);
+                fh.readFile();
             }
-            if (myuser.validateUsername(Firstname)) {
-                JOptionPane.showMessageDialog(null, "Firstname is valid!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Please enter a name.");
-            }
-            if (myuser.validateUsername(Surname)) {
-                JOptionPane.showMessageDialog(null, "Surname is valid!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Please enter a surnname.");
-            }
-            if (myuser.validateAge(Integer.toString(Age))) {
-                JOptionPane.showMessageDialog(null, "Age is valid!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Please enter a valid age.");
-            }
-            if (myuser.validatePassword(PasswordString)) {
-           JOptionPane.showMessageDialog(null, "Password is valid!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Password is valid!");
+
+        } catch (NumberFormatException nfe){
+            JOptionPane.showMessageDialog(null, "Error", "Number format Exception", JOptionPane.ERROR_MESSAGE);
+        } catch (RuntimeException re) {
+            JOptionPane.showMessageDialog(null, "Error", "Runtime Exception", JOptionPane.ERROR_MESSAGE);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error", "Runtime Exception", JOptionPane.ERROR_MESSAGE);
+
         }
+           
         }
 
-        
 
     }//GEN-LAST:event_btnSignUpActionPerformed
 
